@@ -57,8 +57,10 @@ function drawRoute(routeId) {
   }
 }
 
+const DATA_URL = new URL('./CTA_-_Bus_Routes_20251006.geojson', window.location.href);
+
 // 5) Load routes, pick ONE random target, draw it once
-fetch('/CTA_-_Bus_Routes_20251006.geojson')
+fetch(DATA_URL)
   .then(r => r.json())
   .then(geo => {
     ALL = geo;
