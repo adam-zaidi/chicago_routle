@@ -1,0 +1,237 @@
+* {
+  margin: 0px;
+  padding: 0px;
+  font-family: Georgia, serif;
+}
+
+.container {
+    background-color: #fff;
+    border-radius: 15px;
+    margin: 20px;
+    overflow: hidden;
+    outline: 2px solid var(--ink);
+}
+
+body {
+  background-color: #fff;
+}
+
+.header-bar {
+  width: 100%;
+  height: 100%;
+  background-color: #fff;
+  /* text-align: center; */
+  color: #000;
+  font-size: 20px;
+  outline: 2px solid #fff;
+}
+
+
+.h1-box {
+  width: 100px;
+  margin-left: 20px;
+  margin-right: 20px;
+  /* display: inline-block; */
+  cursor: default;
+}
+
+h1 {
+  font-family: Georgia, serif;
+}
+
+#map {
+    width: 100vw;
+    height: 40vh;
+    background:#fff;
+}
+
+#routeSelect {
+    position:absolute;
+    z-index:1000;
+    top:10px;
+    left:10px;
+    padding:6px 10px;
+}
+:root {
+  --cream: #fffde9;     /* pale header bg */
+  --ink: #0b0b0b;       /* primary text */
+  --muted: #6b7280;     /* secondary text */
+  --border: #e5e7eb;    /* light gray border */
+  --bg: #f3f4f6;        /* app background */
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html, body {
+  height: 100%;
+}
+
+body {
+  margin: 0;
+  font-family: system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji", "Segoe UI Emoji";
+  color: var(--ink);
+  background: var(--bg);
+}
+
+/* =======================
+   Header (masthead)
+   ======================= */
+.masthead {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 20px 24px;
+  border-bottom: 1px solid var(--border);
+  background: var(--cream);
+}
+
+.masthead__left {
+  display: flex;
+  flex-direction: column;
+}
+
+.masthead .brand {
+  margin: 0;
+  font-size: 40px;
+  line-height: 1;
+  font-weight: 800;
+  letter-spacing: -0.02em;
+}
+
+.masthead .subtitle {
+  margin: 6px 0 0 0;
+  color: var(--muted);
+  font-size: 18px;
+}
+
+.masthead__right {
+  display: flex;
+  gap: 8px;
+  align-items: baseline;
+  text-align: right;
+}
+
+.meta-label {
+  color: var(--muted);
+  font-weight: 600;
+}
+
+.meta-date {
+  font-weight: 800;
+  font-size: 20px;
+}
+
+/* =======================
+   Main stage + map
+   ======================= */
+
+/* Support both class and id, since the map uses both */
+.map, #map {
+  width: 100%;
+  height: 40vh;
+  min-height: 200px;
+  /* border: 1px solid var(--border); */
+  /* border-radius: 8px; */
+  overflow: hidden;
+  background: #ffffff; /* shows if tiles hidden */
+}
+
+/* FORCE tiles visible (debug) */
+.leaflet-tile-pane { display: block !important; opacity: 1 !important; }
+
+/* Route picker (dev control) */
+.route-select, #routeSelect {
+  position: absolute;
+  top: 96px;
+  left: 16px;
+  z-index: 1000;
+  padding: 6px 10px;
+  background: #fff;
+  border: 1px solid var(--border);
+  border-radius: 6px;
+}
+
+/* =======================
+   Responsive tweaks
+   ======================= */
+@media (max-width: 640px) {
+  .masthead {
+    padding: 14px 16px;
+  }
+  .masthead .brand {
+    font-size: 28px;
+  }
+  .masthead .subtitle {
+    font-size: 14px;
+  }
+  .map, #map {
+    height: 55vh;
+    min-height: 360px;
+  }
+}
+
+/* =======================
+   Routle guess UI
+   ======================= */
+.guess-ui {
+  padding: 16px;
+}
+
+#guessForm {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+  margin-bottom: 12px;
+}
+
+.route-search {
+  flex: 1 1 auto;
+  padding: 10px 12px;
+  font-size: 16px;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  background: #fff;
+  outline: none;
+}
+.route-search:focus {
+  box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.15);
+}
+
+.guess-btn {
+  padding: 10px 14px;
+  font-size: 15px;
+  font-weight: 600;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  background: #fff;
+  cursor: pointer;
+}
+
+.guess-bars {
+  display: flex;
+  flex-direction: column    ;
+  gap: 8px;
+  background: #fff;
+}
+
+.guess-bar {
+  height: 44px;
+  border-radius: 8px;
+  border: 1px solid var(--border);
+  /* background: linear-gradient(180deg, #f9fafb, #f3f4f6); */
+  padding: 10px 12px;
+  font-weight: 700;
+  letter-spacing: 0.2px;
+  opacity: 1;                 /* starts invisible; JS raises by 0.2 per guess */
+  transition: opacity 500ms ease-in-out;
+  display: flex;
+  align-items: center;
+}
+
+/* smaller screens */
+@media (max-width: 640px) {
+  .guess-ui { padding: 12px; }
+  .guess-bar { height: 40px; }
+}
